@@ -1,52 +1,64 @@
 import React from 'react';
+import { api } from '../utils/Api';
+import Card from './Card'
 
-export default function Main() {
+export default function Main({
+  handleEditAvatar,
+  handleAddPlace,
+  handleEditProfile,
+}) {
+  const [userName, setUserName] = React.useState();
+  const [userDescription, setUserDescription] = React.useState();
+  const [userAvatar, setUserAvatar] = React.useState();
+  const [cards, setCards] = React.useState([]);
 
-    function handleAddPlaceClick () {
-        const popupNewCard = document.querySelector('.popup_form_type_new-card');
-        popupNewCard.classList.add('popup_opened')
-    }
-// document.querySelector('.profile__add-button').addEventListener('click', () => {
-//     handleAddPlaceClick ()
-
+  React.useEffect(() => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()]).then(
+      ([user, data]) => {
+        setUserName(user.name);
+        setUserDescription(user.about);
+        setUserAvatar(user.avatar);
+        setCards(data);
+        console.log(data);
+      }
+    );
+  }, []);
 
   return (
     <main className='content'>
       <section className='profile'>
-         <button className='profile__avatar' type='button'></button>
+         
+        <button
+          className='profile__avatar'
+          type='button'
+          onClick={handleEditAvatar}
+          style={{ backgroundImage: `url(${userAvatar})` }}
+        ></button>
         <div className='profile__info'>
-          <h1 className='profile__title'>Жак-Ив Кусто</h1>
-          <button className='profile__edit-button' type='button'></button>
-          <p className='profile__subtitle'>Исследователь океана</p>
+          <h1 className='profile__title'>{userName}</h1>
+          <button
+            className='profile__edit-button'
+            type='button'
+            onClick={handleEditProfile}
+          ></button>
+          <p className='profile__subtitle'>{userDescription}</p>
         </div>
-        <button className='profile__add-button' onClick={handleAddPlaceClick} type='button'></button>
+        <button
+          className='profile__add-button'
+          type='button'
+          onClick={handleAddPlace}
+        ></button>
       </section>
       <section className='grid-elements'>
-        <template className='template-cards'>
-          <div className='grid-element'>
-            <img
-              src='images/baikal.jpg'
-              alt='Скалы и чайки на озере Байкал'
-              className='grid-element__image'
-            />
-            <button
-              className='grid-element__trash-button'
-              type='button'
-            ></button>
-            <div className='grid-element__description'>
-              <h3 className='grid-element__title'></h3>
-              <div className='grid-element__like-container'>
-                <button
-                  className='grid-element__like-button'
-                  type='button'
-                ></button>
-                <h3 className='grid-element__like-count'>1</h3>
-              </div>
-            </div>
-          </div>
-        </template>
+        <ul className='template-cards'>
+          {cards.map((card, id) => {
+              return(
+                <Card card={card}/>
+              )
+            
+          })}
+        </ul>
       </section>
-      
     </main>
   );
 }

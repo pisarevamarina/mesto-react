@@ -1,32 +1,7 @@
+@import url(./__list/grid-elements__list.css);
+
 .grid-elements{
-    display: grid;
-    grid-template-columns: repeat(3, 282px);
-    grid-gap: 18px;
-    margin-bottom: 66px;
+display: flex;
+margin: 0 auto;
 }
 
-@media screen and (max-width: 950px) {
-    .grid-elements{
-    grid-template-columns: repeat(2, 1fr);
-    padding-left: 19px;
-    padding-right: 19px;
-    box-sizing: border-box;
-        
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .grid-elements{
-        grid-template-columns: 1fr;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .grid-elements{
-        grid-template-columns: 282px;
-        max-width: 282px;
-        margin: 0 auto 48px;
-        grid-gap: 20px;
-        padding: 0;
-    }
-}

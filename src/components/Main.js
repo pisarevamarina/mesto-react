@@ -1,11 +1,12 @@
 import React from 'react';
 import { api } from '../utils/Api';
-import Card from './Card'
+import Card from './Card';
 
 export default function Main({
   handleEditAvatar,
   handleAddPlace,
   handleEditProfile,
+  onCardClick,
 }) {
   const [userName, setUserName] = React.useState();
   const [userDescription, setUserDescription] = React.useState();
@@ -50,12 +51,11 @@ export default function Main({
         ></button>
       </section>
       <section className='grid-elements'>
-        <ul className='template-cards'>
-          {cards.map((card, id) => {
-              return(
-                <Card card={card}/>
-              )
-            
+        <ul className='grid-elements__list'>
+          {cards.map((card) => {
+            return (
+              <Card card={card} key={card._id} onCardClick={onCardClick} />
+            );
           })}
         </ul>
       </section>

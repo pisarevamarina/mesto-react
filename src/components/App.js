@@ -6,36 +6,46 @@ import PopupWithForm from './PopupWithForn';
 import ImagePopup from './ImagePopup';
 
 function App() {
-
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
+    false
+  );
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
+    false
+  );
+  const [selectedCard, setSelectedCard] = React.useState(false);
 
-  function handleEditAvatarClick () {
-      setIsEditAvatarPopupOpen(true);
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
   }
 
-  function handleEditProfileClick () {
+  function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
 
-  function handleAddPlaceClick () {
+  function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
 
-  function closeAllPopups () {
+  function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setSelectedCard(false);
+  }
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
   }
 
   return (
     <div className='page-container'>
       <Header />
-      <Main 
-      handleEditAvatar={handleEditAvatarClick}
-      handleAddPlace={handleAddPlaceClick}
-      handleEditProfile={handleEditProfileClick }
+      <Main
+        handleEditAvatar={handleEditAvatarClick}
+        handleAddPlace={handleAddPlaceClick}
+        handleEditProfile={handleEditProfileClick}
+        onCardClick={handleCardClick}
       />
       <PopupWithForm
         name='edit-profile'
@@ -70,8 +80,13 @@ function App() {
         <span className='popup__input-error' id='info-input-error'></span>
       </PopupWithForm>
 
-      <PopupWithForm name='new-card' title='Новое место' buttonText='Создать'
-      isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
+      <PopupWithForm
+        name='new-card'
+        title='Новое место'
+        buttonText='Создать'
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+      >
         <input
           type='text'
           className='popup__input popup__input_type_title'
@@ -121,7 +136,7 @@ function App() {
         <span className='popup__input-error' id='avatar-input-error'></span>
       </PopupWithForm>
 
-      <ImagePopup />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} />
 
       <Footer />
     </div>

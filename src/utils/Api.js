@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 export default class Api {
     constructor (options) {
 this.baseUrl =  options.baseUrl;

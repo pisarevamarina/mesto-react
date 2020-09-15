@@ -20,7 +20,7 @@ export default function Main({
         setUserDescription(user.about);
         setUserAvatar(user.avatar);
         setCards(data);
-        console.log(data);
+      
       }
     );
   }, []);

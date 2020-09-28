@@ -1,41 +1,18 @@
 import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { api } from '../utils/Api';
 import Card from './Card';
-
 
 export default function Main({
   handleEditAvatar,
   handleAddPlace,
   handleEditProfile,
   onCardClick,
+  cards,
+  onCardLike,
+  onCardDelete,
 }) {
-  const [cards, setCards] = React.useState([]);
+  const currentUser = React.useContext(CurrentUserContext);
 
-  React.useEffect(() => {
-    Promise.all([api.getInitialCards()]).then(
-      ([data]) => {
-        setCards(data);
-      
-      }
-    );
-  }, []);
-const currentUser = React.useContext(CurrentUserContext);
-
-function handleCardLike(card) {
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
-  api.changeLikeCardStatus(card._id, !isLiked).then((newCard)=> {
-    const newCards = cards.map((c) => c._id === card._id ? newCard : c);
-    setCards(newCards)
-  });
-}
-
-function handleCardDelete (card) {
-  api.deleteCard(card._id).then(()=>{
-    const newCards = cards.filter((c) => c._id !==card._id);
-    setCards(newCards) 
-  })
-}
   return (
     <main className='content'>
       <section className='profile'>
@@ -65,7 +42,13 @@ function handleCardDelete (card) {
         <ul className='grid-elements__list'>
           {cards.map((card) => {
             return (
-              <Card card={card} key={card._id} onCardClick={onCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+              <Card
+                card={card}
+                key={card._id}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+              />
             );
           })}
         </ul>

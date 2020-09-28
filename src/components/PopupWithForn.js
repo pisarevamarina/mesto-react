@@ -13,6 +13,7 @@ export default function PopupWithForm(props) {
         method='POST'
         action='#'
         noValidate
+        onSubmit={props.onSubmit}
       >
         <button
           className='popup__exit-button'

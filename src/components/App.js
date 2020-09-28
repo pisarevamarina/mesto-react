@@ -4,6 +4,9 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForn';
 import ImagePopup from './ImagePopup';
+import { api } from '../utils/Api';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import EditProfilePopup from './EditProfilePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
@@ -14,6 +17,21 @@ function App() {
     false
   );
   const [selectedCard, setSelectedCard] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState('');
+  const [cards, setCards] = React.useState([]);
+
+ React.useEffect(() => {
+  api.getInitialCards().then(
+    ([data]) => {
+      setCards(data);
+ })
+ }, [])
+
+  React.useEffect(() => {
+   api.getUserInfo().then((user) => {
+      setCurrentUser(user);
+    });
+  }, []);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -39,6 +57,8 @@ function App() {
   }
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
+    
     <div className='page-container'>
       <Header />
       <Main
@@ -47,38 +67,7 @@ function App() {
         handleEditProfile={handleEditProfileClick}
         onCardClick={handleCardClick}
       />
-      <PopupWithForm
-        name='edit-profile'
-        title='Редактировать профиль'
-        buttonText='Сохранить'
-        isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
-      >
-        <input
-          type='text'
-          className='popup__input popup__input_type_name'
-          defaultValue='Жак-Ив Кусто'
-          placeholder=' Введите имя'
-          name='name'
-          required
-          minLength='2'
-          maxLength='40'
-          id='name-input'
-        />
-        <span className='popup__input-error' id='name-input-error'></span>
-        <input
-          type='text'
-          className='popup__input popup__input_type_info'
-          defaultValue='Исследователь океана'
-          placeholder=' Чем вы занимаетесь?'
-          name='about'
-          required
-          minLength='2'
-          maxLength='200'
-          id='info-input'
-        />
-        <span className='popup__input-error' id='info-input-error'></span>
-      </PopupWithForm>
+<EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/>
 
       <PopupWithForm
         name='new-card'
@@ -140,6 +129,7 @@ function App() {
 
       <Footer />
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 

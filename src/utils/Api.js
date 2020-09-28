@@ -49,20 +49,12 @@ this.headers = options.headers;
 
     }
 
-   setLike (cardId) {
+    changeLikeCardStatus (cardId, isLiked) {
         return fetch (`${this.baseUrl}/cards/likes/${cardId}`, {
-          method: 'PUT',
+          method: isLiked ? 'PUT' : 'DELETE',
           headers: this.headers
         })
         .then(this._getResponseData);
-    }
-
-    deleteLike (cardId) {
-        return fetch (`${this.baseUrl}/cards/likes/${cardId}`, {
-            method: 'DELETE',
-            headers: this.headers
-          })
-          .then(this._getResponseData);
     }
 
     deleteCard(cardId) {

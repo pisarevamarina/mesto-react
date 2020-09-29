@@ -41,7 +41,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       <input
         type='text'
         className='popup__input popup__input_type_name'
-        defaultValue={name}
+        value={name}
         placeholder=' Введите имя'
         name='name'
         required
@@ -54,7 +54,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       <input
         type='text'
         className='popup__input popup__input_type_info'
-        defaultValue={description}
+        value={description}
         placeholder=' Чем вы занимаетесь?'
         name='about'
         required

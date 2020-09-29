@@ -16,7 +16,6 @@ export default function Main({
   return (
     <main className='content'>
       <section className='profile'>
-         
         <button
           className='profile__avatar'
           type='button'

@@ -2,7 +2,7 @@
   "name": "mesto-react",
   "description": "* This app allowed you to post your photos in your personal travel blog *",
   "author": "Pisareva Marina",
-  // "homepage": "https://pisarevamarina.github.io/mesto-react/",
+  "homepage": "https://pisarevamarina.github.io/mesto-react/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

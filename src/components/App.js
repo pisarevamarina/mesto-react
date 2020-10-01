@@ -23,22 +23,26 @@ function App() {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getInitialCards().then((data) => {
-      setCards(data);
-    }).catch((err)=>{
-      console.log(err);
-    })
+    api
+      .getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-  
 
   React.useEffect(() => {
-    api.getUserInfo().then((user) => {
-      setCurrentUser(user);
-    }).catch((err)=>{
-      console.log(err);
-    })
-  },
-   []);
+    api
+      .getUserInfo()
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -64,21 +68,27 @@ function App() {
   }
 
   function handleUpdateUser(userInfo) {
-    api.editUserInfo(userInfo).then((user) => {
-      setCurrentUser(user);
-      closeAllPopups();
-    }).catch((err)=>{
-      console.log(err);
-    })
+    api
+      .editUserInfo(userInfo)
+      .then((user) => {
+        setCurrentUser(user);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleUpdateAvatar(newAvatar) {
-    api.changeAvatar(newAvatar).then((avatar) => {
-      setCurrentUser(avatar);
-      closeAllPopups();
-    }).catch((err)=>{
-      console.log(err);
-    })
+    api
+      .changeAvatar(newAvatar)
+      .then((avatar) => {
+        setCurrentUser(avatar);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleCardLike(card) {
@@ -90,22 +100,27 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    api.deleteCard(card._id).then(() => {
-      const newCards = cards.filter((c) => c._id !== card._id);
-      setCards(newCards);
-    }).catch((err)=>{
-      console.log(err);
-    })
-    
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        const newCards = cards.filter((c) => c._id !== card._id);
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleAddPlaceSubmit(data) {
-    api.postUserCard(data).then((newPlace) => {
-      setCards([newPlace, ...cards]);
-      closeAllPopups();
-    }).catch((err)=>{
-      console.log(err);
-    })
+    api
+      .postUserCard(data)
+      .then((newPlace) => {
+        setCards([newPlace, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (

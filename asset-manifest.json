@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.9f6dc574.chunk.css",
-    "main.js": "/static/js/main.3b19a68a.chunk.js",
-    "main.js.map": "/static/js/main.3b19a68a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e8402bce.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e8402bce.js.map",
-    "static/js/2.6e4763c2.chunk.js": "/static/js/2.6e4763c2.chunk.js",
-    "static/js/2.6e4763c2.chunk.js.map": "/static/js/2.6e4763c2.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.7566c5e6dfe7ea5912070ac3a9c3395e.js": "/precache-manifest.7566c5e6dfe7ea5912070ac3a9c3395e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.9f6dc574.chunk.css.map": "/static/css/main.9f6dc574.chunk.css.map",
-    "static/js/2.6e4763c2.chunk.js.LICENSE.txt": "/static/js/2.6e4763c2.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/profile___avatar.b914062f.jpg"
+    "main.css": "/react-twit-app/static/css/main.13fb5071.chunk.css",
+    "main.js": "/react-twit-app/static/js/main.b09eb44d.chunk.js",
+    "main.js.map": "/react-twit-app/static/js/main.b09eb44d.chunk.js.map",
+    "runtime-main.js": "/react-twit-app/static/js/runtime-main.17d3caa2.js",
+    "runtime-main.js.map": "/react-twit-app/static/js/runtime-main.17d3caa2.js.map",
+    "static/js/2.6e4763c2.chunk.js": "/react-twit-app/static/js/2.6e4763c2.chunk.js",
+    "static/js/2.6e4763c2.chunk.js.map": "/react-twit-app/static/js/2.6e4763c2.chunk.js.map",
+    "index.html": "/react-twit-app/index.html",
+    "precache-manifest.5f2bb146e001f761370068265c7b8607.js": "/react-twit-app/precache-manifest.5f2bb146e001f761370068265c7b8607.js",
+    "service-worker.js": "/react-twit-app/service-worker.js",
+    "static/css/main.13fb5071.chunk.css.map": "/react-twit-app/static/css/main.13fb5071.chunk.css.map",
+    "static/js/2.6e4763c2.chunk.js.LICENSE.txt": "/react-twit-app/static/js/2.6e4763c2.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/react-twit-app/static/media/profile___avatar.b914062f.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e8402bce.js",
+    "static/js/runtime-main.17d3caa2.js",
     "static/js/2.6e4763c2.chunk.js",
-    "static/css/main.9f6dc574.chunk.css",
-    "static/js/main.3b19a68a.chunk.js"
+    "static/css/main.13fb5071.chunk.css",
+    "static/js/main.b09eb44d.chunk.js"
   ]
 }
